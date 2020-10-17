@@ -1,4 +1,4 @@
-# E-Sport CMS API
+# Node RestAPI Boilerplate
 
 ## Requirements
 

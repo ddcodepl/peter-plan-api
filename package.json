@@ -1,5 +1,5 @@
 {
-    "name": "express-boilerplate",
+    "name": "node-api",
     "version": "0.0.1",
     "description": "Boilerplate for express app with mongo and bcrypt",
     "main": "index.js",
