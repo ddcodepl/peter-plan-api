@@ -14,6 +14,34 @@
         "watch:dev": "nodemon",
         "test": "jest"
     },
+    "nodemonConfig": {
+        "exec": "npm run dev",
+        "watch": [
+            "src/*"
+        ],
+        "ignore": [
+            "**/__tests__/**",
+            "*.test.js",
+            "*.spec.js"
+        ]
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-env"
+        ],
+        "plugins": [
+            [
+                "@babel/plugin-transform-runtime",
+                {
+                    "regenerator": true,
+                    "corejs": 3
+                }
+            ]
+        ]
+    },
+    "jest": {
+        "testEnvironment": "node"
+    },
     "keywords": [],
     "author": {
         "name": "Damian Dabrowski",
@@ -21,38 +49,26 @@
     },
     "license": "ISC",
     "dependencies": {
-        "@babel/cli": "^7.12.1",
-        "@babel/core": "^7.12.3",
-        "@babel/preset-env": "^7.12.1",
+        "dotenv": "^7.0.0",
         "express": "^4.16.3",
         "multer": "^1.4.2",
+        "nodemon": "^1.19.4",
         "npm-run-all": "^4.1.5"
     },
     "devDependencies": {
-        "babel-cli": "^6.26.0",
-        "babel-core": "^6.26.3",
-        "babel-plugin-transform-async-to-generator": "^6.24.1",
-        "babel-polyfill": "^6.26.0",
-        "babel-preset-env": "^1.6.1",
+        "core-js": "^3.6.5",
+        "@babel/cli": "^7.12.1",
+        "@babel/core": "^7.12.3",
+        "@babel/plugin-transform-runtime": "^7.12.1",
+        "@babel/preset-env": "^7.12.1",
+        "@babel/runtime": "^7.12.1",
+        "@babel/runtime-corejs3": "^7.12.1",
         "bcrypt": "^3.0.6",
         "body-parser": "^1.18.3",
-        "dotenv": "^7.0.0",
         "jest": "^26.5.3",
         "mongoose": "^5.1.2",
         "mongoose-url-slugs": "^1.0.2",
-        "nodemon": "^1.19.4",
         "path": "^0.12.7",
         "rimraf": "^2.7.1"
-    },
-    "nodemonConfig": {
-        "exec": "npm run dev",
-        "watch": [ "server/*", "public/*" ],
-        "ignore": [ "**/__tests__/**", "*.test.js", "*.spec.js" ]
-    },
-    "babel": {
-        "presets": [ "@babel/preset-env" ]
-    },
-    "jest": {
-        "testEnvironment": "node"
     }
 }
