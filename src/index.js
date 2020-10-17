@@ -13,6 +13,7 @@ import dbConfig from './configs/db'
 /**
  * Routes
  */
+import rooms from "./routes/rooms";
 
 dotenv.config()
 dbConfig()
@@ -46,7 +47,7 @@ app.listen(app.get('port'), function() {
  *
  * Example: app.use('/news', news())
  */
-//
+app.use('/rooms', rooms())
 
 /**
  * Static directories
