@@ -4,11 +4,15 @@
     "description": "Boilerplate for express app with mongo and bcrypt",
     "main": "index.js",
     "scripts": {
+        "start": "npm run prod",
+        "build": "npm-run-all clean transpile",
+        "server": "node dist/index.js",
+        "dev": "NODE_ENV=development npm-run-all build server",
+        "prod": "NODE_ENV=production npm-run-all build server",
+        "transpile": "babel ./src --out-dir dist",
         "clean": "rimraf ./dist",
-        "prestart": "npm run -s build",
-        "start": "PORT=5555 node dist/index.js",
-        "build": "rimraf ./dist && babel ./src -d ./dist",
-        "dev": "PORT=5555 nodemon -w ./src --exec \"babel-node ./src\""
+        "watch:dev": "nodemon",
+        "test": "jest"
     },
     "keywords": [],
     "author": {
@@ -17,8 +21,12 @@
     },
     "license": "ISC",
     "dependencies": {
+        "@babel/cli": "^7.12.1",
+        "@babel/core": "^7.12.3",
+        "@babel/preset-env": "^7.12.1",
         "express": "^4.16.3",
-        "multer": "^1.4.2"
+        "multer": "^1.4.2",
+        "npm-run-all": "^4.1.5"
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",
@@ -29,10 +37,22 @@
         "bcrypt": "^3.0.6",
         "body-parser": "^1.18.3",
         "dotenv": "^7.0.0",
+        "jest": "^26.5.3",
         "mongoose": "^5.1.2",
         "mongoose-url-slugs": "^1.0.2",
-        "nodemon": "^1.18.4",
+        "nodemon": "^1.19.4",
         "path": "^0.12.7",
-        "rimraf": "^2.6.2"
+        "rimraf": "^2.7.1"
+    },
+    "nodemonConfig": {
+        "exec": "npm run dev",
+        "watch": [ "server/*", "public/*" ],
+        "ignore": [ "**/__tests__/**", "*.test.js", "*.spec.js" ]
+    },
+    "babel": {
+        "presets": [ "@babel/preset-env" ]
+    },
+    "jest": {
+        "testEnvironment": "node"
     }
 }
