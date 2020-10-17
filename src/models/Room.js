@@ -18,7 +18,7 @@ const Room = mongoose.Schema(
             // trim: true,
         },
         settings: {
-            type: Array,
+            type: Object,
             required: true,
             trim: true,
         },
